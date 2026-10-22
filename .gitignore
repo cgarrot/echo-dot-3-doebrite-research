@@ -1,0 +1,9 @@
+*.bin
+*.img
+*.apk
+*.apkm
+*.tgz
+*.tar.gz
+*.pyc
+__pycache__/
+.DS_Store
