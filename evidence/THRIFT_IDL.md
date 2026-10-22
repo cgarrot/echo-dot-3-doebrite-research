@@ -183,7 +183,7 @@ Le contenu à mettre dans `text` est le PEM **tel quel** (retours à la ligne
 ```json
 [1,"getKnownList",2,1,{"0":{"lst":["rec",2,
  {"1":{"str":"TEST"},             "2":{"i32":0},   "3":{"tf":0},"4":{"i32":1},"5":{"tf":0},"6":{"i32":1},"7":{"tf":0}},
- {"1":{"str":"Livebox-2140_EXT"}, "2":{"i32":-43}, "3":{"tf":0},"4":{"i32":1},"5":{"tf":0},"6":{"i32":1},"7":{"tf":0}}]}}]
+ {"1":{"str":"<home-ssid>"}, "2":{"i32":-43}, "3":{"tf":0},"4":{"i32":1},"5":{"tf":0},"6":{"i32":1},"7":{"tf":0}}]}}]
 ```
 → `1=essid`, `2=signal`, `3=secured`, `4=smethod`, `5=supported`, `6=state`, `7=tethered`.
 Les deux entrées portent `smethod=1 (NONE)` et `secured=false` : elles ont été

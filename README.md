@@ -18,7 +18,7 @@
 |---|---|
 | **Device** | Amazon Echo Dot 3rd Gen **with clock** |
 | **Codename** | `doebrite` (shared firmware id with `octave` = Echo Studio) |
-| **DSN tested** | `G091470502330EBE` |
+| **DSN tested** | `G0914705XXXXXXX` |
 | **deviceType** | `A30YDR2MK8HMRV` |
 | **SoC** | MediaTek **MT8167** · Android 7.1.2 / Fire OS 6 · 32-bit userspace |
 | **Constraints** | Wi-Fi + BLE + 2 buttons + power. Nothing else. |

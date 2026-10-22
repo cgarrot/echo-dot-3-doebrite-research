@@ -149,7 +149,7 @@ underflow » = fix CPU). Audit profond du cache-add/cache-flush restant à faire
 Découvert dans le bundle GPL (fireos/external/dnsmasq, VERSION "2.51",
 build DNS+DHCP+IPv6, -DNO_TFTP -DNO_SCRIPT, patch Amazon DHCP_HIDE_HOSTNAME).
 C'est lui qui sert le DHCP (et probablement le DNS) du **réseau de setup
-Amazon-EBE en mode orange** (10.201.126.241) — NOUS sommes le client.
+Amazon-XXXX en mode orange** (10.201.126.241) — NOUS sommes le client.
 
 ### Ce qui est VIVANT sur 2.51 (après vérification)
 | CVE | verdict sur 2.51 | pourquoi |
@@ -161,7 +161,7 @@ Amazon-EBE en mode orange** (10.201.126.241) — NOUS sommes le client.
 | fuzz rfc2131.c 2010 (options 12/60/77/81/82/55) | ✅ à faire | code d'époque, chemins dhcpcd-serveur jamais audités en violence |
 
 ### Protocole fenêtre orange (à jouer par ag1)
-1. Pi rejoint Amazon-EBE (bypass.sh existant) — getKnownList/scan OK.
+1. Pi rejoint Amazon-XXXX (bypass.sh existant) — getKnownList/scan OK.
 2. **Sonde UDP** : `dig @10.201.126.241 +time=2 +tries=1 pwn.test` et
    `nc -u -z -w1 10.201.126.241 53 67` — UDP jamais scanné sur le device.
 3. Si DNS répond → requêtes malformées CVE-2015-3294-style (EDNS0 multi,

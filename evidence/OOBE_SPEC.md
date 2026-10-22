@@ -112,12 +112,12 @@ l'adressage du soft-AP n'est pas aléatoire : il est connu de l'app.
 ```json
 {"0":{"rec":{
   "1": {"str":"0009698494596"},                      // serial (13 chiffres)
-  "2": {"str":"DC91BFBB724A"},                       // MAC (BSSID+2, bit local)
+  "2": {"str":"DC91BFXXXXXX"},                       // MAC (BSSID+2, bit local)
   "3": {"rec":{"1":{"str":""},"2":{"i32":0},"3":{"tf":0},
                "4":{"i32":0},"5":{"tf":0},"6":{"i32":0},"7":{"tf":0}}},  // état réseau
   "4": {"str":""},                                   // SSID courant (vide en setup)
   "5": {"rec":{"1":{"str":"-----BEGIN CERTIFICATE-----…"}}},  // cert client
-  "6": {"str":"G091470502330EBE"},                   // DSN
+  "6": {"str":"G0914705XXXXXXX"},                   // DSN
   "7": {"tf":1},                                     // flag setup non terminé ?
   "8": {"lst":["str",16,"ja-JP","es-US","fr-FR","es-MX","en-CA","es-ES",
                "en-GB","en-AU","fr-CA","en-IN","it-IT","pt-BR","en-US",
@@ -181,7 +181,7 @@ refuse un marché hors de sa zone. Avec des args vides, l'erreur devient
    Signature mesurée : `nc -z` → open, `ping` → 100 % loss, HTTP → timeout.
 3. **Réarmement** : maintien du bouton Action ~20-25 s jusqu'à l'anneau orange,
    puis nouvelle session (sous-réseau `10.201.126.240/28` retiré au hasard,
-   Echo = `.241`, MAC `DC:91:BF:BB:72:4A`, BSSID `d6:91:bf:bb:72:4a`).
+   Echo = `.241`, MAC `DC:91:BF:XX:XX:XX`, BSSID `D6:91:BF:XX:XX:XX`).
 
 ---
 

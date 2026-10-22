@@ -1,5 +1,5 @@
 import os, glob
-ROOT="/home/cgarrot/oct_mnt"
+ROOT="/home/c<user>/oct_mnt"
 p=os.path.join(ROOT,"system/etc/init/init.oobe.rc")
 txt=open(p,encoding="utf-8",errors="replace").read()
 print(f"=== init.oobe.rc INTÉGRAL ({len(txt)} o) ===")

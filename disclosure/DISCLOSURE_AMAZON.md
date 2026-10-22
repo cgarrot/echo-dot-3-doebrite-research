@@ -1,7 +1,7 @@
 # Security Disclosure — Amazon Echo Dot (3rd Gen, with clock) — `doebrite`
 
 **Device:** Echo Dot 3rd Gen with clock
-**Codename:** `doebrite` · **DSN:** `G091470502330EBE` · **deviceType:** `A30YDR2MK8HMRV`
+**Codename:** `doebrite` · **DSN:** `G0914705XXXXXXX` · **deviceType:** `A30YDR2MK8HMRV`
 **SoC:** MediaTek MT8167 · Android 7.1.2 / Fire OS 6 · userspace 32-bit (armeabi-v7a)
 **Firmware under test:** `update-kindle-doebrite-NS65741_user_8149_0013222532484.bin`
 **Reported by:** independent security research
@@ -63,7 +63,7 @@ service oobed_on_boot /system/bin/oobed -r 1
 
 It is started by three property triggers (`com.amazon.puffin.OOBED_START` =
 `on_boot`, `on_button_press`, `on_network_disconnect`) and listens on TCP **8080**
-on the device's setup access point (`Amazon-EBE`, gateway `10.201.126.241`).
+on the device's setup access point (`Amazon-XXXX`, gateway `10.201.126.241`).
 
 ### Vulnerability
 
@@ -81,7 +81,7 @@ stack canary — an earlier draft of this report stated otherwise; that is corre
 
 ### Reproduction
 
-1. Connect to the setup access point `Amazon-EBE`.
+1. Connect to the setup access point `Amazon-XXXX`.
 2. Send the following HTTP request to `http://10.201.126.241:8080/OOBE`
    (`Content-Type: application/x-thrift`):
 
@@ -291,14 +291,14 @@ Response (measured on a provisioned device):
 
 ```json
 { "status": 101, "statusString": "OK", "version": "2.9.0",
-  "deviceID": "93cc9e5a-45e3-456e-b2c0-92f5f91a18bc",
+  "deviceID": "<spotify-device-uuid>",
   "publicKey": "i7uACqQ4mLE+0dv4…",
   "deviceType": "SPEAKER",
   "libraryVersion": "3.209.367-g12ca7f99",
   "brandDisplayName": "Amazon",
   "modelDisplayName": "Echo_Dot_with_clock",
   "aliases": [ {"name": "<user's Spotify display name> - Echo Dot", "id": "1"} ],
-  "clientID": "27d4dfe427b34d57995b463e5d63198d",
+  "clientID": "<spotify-client-id>",
   "productID": 53 }
 ```
 

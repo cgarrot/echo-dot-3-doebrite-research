@@ -2,7 +2,7 @@
 """dnsmasq_attack — attaque le dnsmasq 2.51 (2010) DU DEVICE en mode orange.
 
 Contexte : le bundle GPL FireOS contient external/dnsmasq VERSION "2.51".
-En mode setup (orange), l'Echo crée le réseau Amazon-EBE et y fait tourner
+En mode setup (orange), l'Echo crée le réseau Amazon-XXXX et y fait tourner
 ce dnsmasq (DHCP certain ; DNS à sonder). Notre Pi = CLIENT de ce réseau
 (bypass.sh) → nos paquets sont parsés par ce code de 2010 côté DEVICE.
 
@@ -11,7 +11,7 @@ requêtes DNS malformées, mémoire du process lisible ». Les CVE-2017 RCE sont
 N/A (DHCPv6/RA n'existaient pas en 2.51) et le heap-2-o de 2.78 exige un
 upstream contrôlé (pas d'Internet en setup).
 
-Usage (Pi joint à Amazon-EBE, passerelle = device, ex 10.201.126.241) :
+Usage (Pi joint à Amazon-XXXX, passerelle = device, ex 10.201.126.241) :
   sudo python3 dnsmasq_attack.py --dev 10.201.126.241 --probe   # sonde 53/67
   sudo python3 dnsmasq_attack.py --dev 10.201.126.241 --case dns_edns_multi
   sudo python3 dnsmasq_attack.py --dev 10.201.126.241 --case all --seq

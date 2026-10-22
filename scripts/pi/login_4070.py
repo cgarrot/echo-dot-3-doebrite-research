@@ -30,13 +30,13 @@ def send(path, body, method="POST", content_type="application/json", timeout=5):
 cases = [
     # Spotify Connect (le firewall mentionne Spotify)
     ("/login", json.dumps({"username":"test","password":"test"}), "POST"),
-    ("/login", json.dumps({"deviceId":"G091470502330EBE","token":"test"}), "POST"),
+    ("/login", json.dumps({"deviceId":"G0914705XXXXXXX","token":"test"}), "POST"),
     ("/login", json.dumps({"type":"spotify","user":"test","auth":"test"}), "POST"),
     ("/api/login", json.dumps({"username":"test","password":"test"}), "POST"),
     # Thrift JSON (le device utilise Thrift partout)
     ("/login", '[1,"login",1,1,{"1":{"str":"test"},"2":{"str":"test"}}]', "POST"),
     # CBL (Code Based Linking — le flux d'enregistrement Echo)
-    ("/cbl", json.dumps({"code":"test","dsn":"G091470502330EBE"}), "POST"),
+    ("/cbl", json.dumps({"code":"test","dsn":"G0914705XXXXXXX"}), "POST"),
     # Spotify zeroconf
     ("/spotify/connect", json.dumps({"action":"getInfo","version":"1.0"}), "POST"),
     # OAuth/token
@@ -44,7 +44,7 @@ cases = [
     ("/oauth/token", json.dumps({"grant_type":"client_credentials"}), "POST"),
     # Amazon auth
     ("/auth", json.dumps({"email":"test@test.com","password":"test"}), "POST"),
-    ("/register", json.dumps({"deviceId":"G091470502330EBE"}), "POST"),
+    ("/register", json.dumps({"deviceId":"G0914705XXXXXXX"}), "POST"),
     # Chemins génériques
     ("/", json.dumps({"action":"login"}), "POST"),
     ("/v1/login", json.dumps({"user":"test","pass":"test"}), "POST"),

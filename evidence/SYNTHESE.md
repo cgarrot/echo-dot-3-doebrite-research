@@ -86,9 +86,9 @@ tee1/tee2.img   2,2 Mo   (TrustZone)
 |---|---|
 | Modèle | Echo Dot 3 avec horloge |
 | Codename | **octave** |
-| DSN | G091470502330EBE |
+| DSN | G0914705XXXXXXX |
 | deviceType | A30YDR2MK8HMRV |
-| MAC Wi-Fi | DC:91:BF:BB:72:4A |
+| MAC Wi-Fi | DC:91:BF:XX:XX:XX |
 | SoC | **MT8167** |
 | Android | **7.1.2** (SDK 25) — Fire OS 6 |
 | Userspace | **100 % 32 bits** (`armeabi-v7a`, pas de `/system/lib64`) |
@@ -305,7 +305,7 @@ TUTORIEL.md                 le tutoriel de provisioning
 ```
 
 **Environnement** :
-- device : **mode enregistré** (tests réseau) ou **setup** (AP `Amazon-EBE`, `10.201.126.241:8080`)
+- device : **mode enregistré** (tests réseau) ou **setup** (AP `Amazon-XXXX`, `10.201.126.241:8080`)
 - notre AP de test : `TEST` / `testing1234`, Pi `192.168.1.41` (piveil)
 - image montée : t3600:`~/oct_mnt` (system.img 1,7 Go)
 - images OTA : `~/Downloads/update-kindle-octave-*.bin` (v1 = celle du device)
@@ -1200,7 +1200,7 @@ ici**.
 
 **Dans le scénario réel, il est sérieux** :
 ```
-1. Un Echo est en mode setup, l'attaquant contrôle l'AP (Amazon-EBE)
+1. Un Echo est en mode setup, l'attaquant contrôle l'AP (Amazon-XXXX)
 2. L'attaquant fait rejoindre à l'Echo le Wi-Fi de la VICTIME (connectToAP)
 3. L'attaquant hijacke le DNS de l'Echo (il est le DHCP de l'AP de setup)
    → api.amazon.com = l'IP qu'il veut, dans le LAN de la victime
@@ -1690,7 +1690,7 @@ qui intéressent un attaquant (credentials Wi-Fi, cartographie du voisinage).**
 1. **Le Echo Dot 3 (2018) utilise-t-il WhisperJoin en BLE ?** Le Dot 3 fait son setup
    par AP Wi-Fi + OOBE sur 8080 (surface déjà explorée à fond). Le BLE WhisperJoin
    est documenté dans l'APK car celle-ci gère plusieurs générations.
-2. **Le PIN est-il dérivable du DSN (`G091470502330EBE`), ou est-ce un secret
+2. **Le PIN est-il dérivable du DSN (`G0914705XXXXXXX`), ou est-ce un secret
    indépendant imprimé sur la boîte ?** Non tranché — c'est LA question qui décide
    si le protocole est rejouable sans possession physique de l'emballage.
 3. **Le mode `UnauthenticatedEcdheKeyExchange` est-il accepté par un Dot 3 ?**
@@ -1778,7 +1778,7 @@ c'est un contrôle d'accès qui fonctionne.**
 ### La mesure qui manquait
 
 **Pour la première fois, une machine a été connectée **sur l'AP de setup de l'Echo**
-(`Amazon-EBE`, BSSID `D6:91:BF:BB:72:4A`) et tout son réseau a été balayé.**
+(`Amazon-XXXX`, BSSID `D6:91:BF:XX:XX:XX`) et tout son réseau a été balayé.**
 
 ```
 XMG (Intel AX201) : 10.201.126.242/28
@@ -1812,7 +1812,7 @@ POST /OOBE   [1, "getDeviceDetails", 1, 1, {}]
 
 ```
 1  : productId       0013222532484
-2  : MAC             DC91BFBB724A
+2  : MAC             DC91BFXXXXXX
 5  : certificat      -----BEGIN CERTIFICATE----- (CN=setup, éphémère)
 6  : DSN             G091470502330BE
 7  : (bool)          true
@@ -1997,7 +1997,7 @@ que nous n'avons pas encore exercé.
 
 ### Le harnais
 
-**Machine connectée sur l'AP de setup (`Amazon-EBE`, 10.201.126.242/28), ciblant
+**Machine connectée sur l'AP de setup (`Amazon-XXXX`, 10.201.126.242/28), ciblant
 `10.201.126.241:8080` (`oobed`).**
 
 ### 1. Parseur Thrift (TJSONProtocol 0.9.0) — testé sur `ping`
@@ -2069,14 +2069,14 @@ GET /spotifyConnect?action=getInfo   → 200 OK, AUCUNE authentification
 **Réponse complète (mesurée) :**
 ```json
 { "status": 101, "statusString": "OK", "version": "2.9.0",
-  "deviceID": "93cc9e5a-45e3-456e-b2c0-92f5f91a18bc",
+  "deviceID": "<spotify-device-uuid>",
   "publicKey": "i7uACqQ4mLE+0dv4…",           // 96 octets
   "deviceType": "SPEAKER",
   "libraryVersion": "3.209.367-g12ca7f99",
   "brandDisplayName": "Amazon",
   "modelDisplayName": "Echo_Dot_with_clock",
-  "aliases": [ {"name": "GARROT - Echo Dot", "id": "1"} ],
-  "clientID": "27d4dfe427b34d57995b463e5d63198d",
+  "aliases": [ {"name": "<owner> - Echo Dot", "id": "1"} ],
+  "clientID": "<spotify-client-id>",
   "productID": 53 }
 ```
 

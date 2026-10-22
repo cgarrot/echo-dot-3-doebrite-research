@@ -1,7 +1,7 @@
 # PROVEN — provisioning d'un Echo Dot 3 **sans app, sans BLE, sans compte Amazon**
 
 Chaîne **validée de bout en bout** le 2026-10-20 : l'Echo (`A30YDR2MK8HMRV`,
-DSN `G091470502330EBE`, MAC `dc:91:bf:bb:72:4a`) a rejoint le hotspot ouvert
+DSN `G0914705XXXXXXX`, MAC `DC:91:BF:XX:XX:XX`) a rejoint le hotspot ouvert
 `clem` de l'utilisateur, piloté uniquement par notre protocole HTTP local.
 Confirmation triple : réponse `{"0":{"i32":0}}` (NO_ERROR) sur `connectToAP`,
 `getKnownList` montre `clem` à **RSSI −29**, et le device apparaît dans la liste
@@ -14,8 +14,8 @@ Seul geste humain : **le réarmement physique** (mic-off + vol-down ~20 s → or
 ## 1. La séquence exacte
 
 ```
-[humain]  réarmement : bouton → anneau orange, AP "Amazon-EBE" émis
-[Pi]      wlan0 rejoint Amazon-EBE (keepalive ARP/rejoint)
+[humain]  réarmement : bouton → anneau orange, AP "Amazon-XXXX" émis
+[Pi]      wlan0 rejoint Amazon-XXXX (keepalive ARP/rejoint)
 [Pi]      POST http://<echo>:8080/OOBE   (Thrift TJSON, une connexion par appel)
 ```
 
@@ -110,17 +110,17 @@ avant l'anti-idle).
 ```
 1. Orange (Micro-OFF + Vol-DOWN 20 s)
 2. AP WPA2 TEST/testing1234 actif sur le Pi (hostapd, canal 11)
-3. Client (Mac en0 ou Pi wlan0) rejoint Amazon-EBE
+3. Client (Mac en0 ou Pi wlan0) rejoint Amazon-XXXX
 4. POST getDeviceDetails → extraire champ 5 (cert PEM)
 5. openssl smime -encrypt -aes256 -binary -outform PEM -in <psk_file> <cert>
 6. POST connectToAP {"1":{"rec":{"1":{"str":"TEST"},"2":{"i32":3},"3":{"rec":{"1":{"str":"<PEM>"}}}}}}
 7. → NO_ERROR (0) en ~7 s → l'Echo rejoint le réseau WPA2
 ```
 
-Architecture à 2 radios : le Mac tire sur Amazon-EBE (en0), le Pi reçoit sur TEST (wlan0 AP).
+Architecture à 2 radios : le Mac tire sur Amazon-XXXX (en0), le Pi reçoit sur TEST (wlan0 AP).
 
 ## ⛔ AVERTISSEMENT (nuit du 20/21) — setupComplete est DESTRUCTEUR
-Mesuré : `setupComplete` fait sortir le device du mode setup (l'AP Amazon-EBE disparaît
+Mesuré : `setupComplete` fait sortir le device du mode setup (l'AP Amazon-XXXX disparaît
 immédiatement) MAIS sans chemin de registration viable (pas de getLinkCode, pas
 d'enregistrement DSS, aucun réseau Amazon joignable), il tombe dans un entre-deux :
 ni joignable sur aucun réseau connu (TEST, Livebox, clem), ni en mode setup.

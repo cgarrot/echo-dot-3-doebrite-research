@@ -8,7 +8,7 @@ POURQUOI
     • 6543 est annoncé en mDNS comme `avs-ffreg-1765549357.local` (§ version=1) —
       un serveur peut **router sur le Host** (vhost) ou attendre ce nom ;
     • le nom d'instance contient le **device id `1765549357`**, et le device a un
-      **DSN `G091470502330EBE`** → chemins plausibles jamais essayés ;
+      **DSN `G0914705XXXXXXX`** → chemins plausibles jamais essayés ;
     • 4070 répond `403` sur `/` mais `404` ailleurs, et renvoie `DAV: 1` +
       `Allow: GET, POST, …, PROPFIND, MKCOL` — signature d'un **routeur Go**
       (peut-être gRPC/h2c derrière) ;
@@ -19,7 +19,7 @@ CE QUE ÇA TESTE
   1. **Host:** IP · `avs-ffreg-1765549357.local` · `device.local` · DSN · `localhost`
   2. **méthodes** : GET, POST, PUT, OPTIONS, TRACE, PATCH
   3. **corps** : TJSON `[1,"ping",1,1,{}]` · JSON-RPC · JSON vide
-  4. **chemins dérivés** : `/1765549357`, `/G091470502330EBE`, `/ffs/1765549357`,
+  4. **chemins dérivés** : `/1765549357`, `/G0914705XXXXXXX`, `/ffs/1765549357`,
      `/avs-ffreg`, `/v1/<dsn>`, `/register`, `/*`
   5. **h2c / gRPC** : tentative HTTP/2 prior-knowledge (préface + SETTINGS) sur 4070
      et chemin `/grpc.health.v1.Health/Check`
@@ -40,9 +40,9 @@ import socket
 import struct
 
 HOSTS = ["{ip}", "avs-ffreg-1765549357.local", "avs-ffreg-1765549357",
-         "device.local", "G091470502330EBE", "localhost", "127.0.0.1"]
-PATHS = ["/", "/*", "/1765549357", "/G091470502330EBE", "/ffs/1765549357",
-         "/avs-ffreg", "/v1/G091470502330EBE", "/register", "/ffs"]
+         "device.local", "G0914705XXXXXXX", "localhost", "127.0.0.1"]
+PATHS = ["/", "/*", "/1765549357", "/G0914705XXXXXXX", "/ffs/1765549357",
+         "/avs-ffreg", "/v1/G0914705XXXXXXX", "/register", "/ffs"]
 METHODS = ["GET", "POST", "PUT", "OPTIONS", "TRACE", "PATCH"]
 BODIES = {
     "tjson": ('[1,"ping",1,1,{}]', "application/x-thrift"),

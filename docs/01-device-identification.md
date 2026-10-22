@@ -20,12 +20,12 @@ by disassembling the actual system image (see `09-methodology.md`).
 
 | Field | Value |
 |---|---|
-| DSN | `G091470502330EBE` |
+| DSN | `G0914705XXXXXXX` |
 | deviceType | `A30YDR2MK8HMRV` |
 | productId | `0013222532484` |
-| Wi-Fi MAC | `DC:91:BF:BB:72:4A` |
+| Wi-Fi MAC | `DC:91:BF:XX:XX:XX` |
 | BLE name (setup) | `Echo Dot-EBE` |
-| Setup AP | `Amazon-EBE`, BSSID `D6:91:BF:BB:72:4A`, gateway `10.201.126.241/28` |
+| Setup AP | `Amazon-XXXX`, BSSID `D6:91:BF:XX:XX:XX`, gateway `10.201.126.241/28` |
 | Matter operational | `35E0AC61C6C83219-079B277EE4E46151` |
 
 `getDeviceDetails` on the setup AP returns, unauthenticated:
@@ -33,9 +33,9 @@ by disassembling the actual system image (see `09-methodology.md`).
 ```json
 [1,"getDeviceDetails",2,1,{"0":{"rec":{
   "1":{"str":"0013222532484"},          // productId
-  "2":{"str":"DC91BFBB724A"},           // MAC
+  "2":{"str":"DC91BFXXXXXX"},           // MAC
   "5":{"rec":{"1":{"str":"-----BEGIN CERTIFICATE-----…"}}},  // ephemeral setup cert
-  "6":{"str":"G091470502330EBE"},       // DSN
+  "6":{"str":"G0914705XXXXXXX"},       // DSN
   "7":{"tf":1},
   "8":{"lst":["str",17,"ja-JP","es-US","hi-IN","fr-FR", …]},
   "11":{"str":"A30YDR2MK8HMRV"},        // deviceType
