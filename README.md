@@ -12,6 +12,32 @@
 
 ---
 
+## Disclosure status
+
+**This is good-faith security research on hardware owned by the researcher.**
+No third-party device, account or network was touched, and no system was damaged.
+
+| | |
+|---|---|
+| **Vendor** | Amazon |
+| **Channel** | [Amazon Vulnerability Research Program](https://hackerone.com/amazonvulnerabilityresearchprogram) (HackerOne) |
+| **Status** | Findings prepared for submission — see [`disclosure/DISCLOSURE_AMAZON.md`](disclosure/DISCLOSURE_AMAZON.md) |
+| **Report reference** | _to be added once assigned_ |
+| **Policy** | Coordinated disclosure. The primary finding (CVE-2019-0205) is reported **first and alone**, as it is the only one of consequence. |
+
+**What this repository deliberately does NOT contain:** exploit code, weaponised
+payloads, firmware dumps, keys or credentials, or anything enabling interference
+with a device that is not your own. The only executable proof-of-concept is a
+five-line request that crashes a provisioning server on a device you control.
+
+Most of the value here is **negative**: a measured demonstration that the device
+cannot be modified over the air. That result protects users as much as it informs
+researchers.
+
+---
+
+---
+
 ## TL;DR
 
 | | |
@@ -286,12 +312,18 @@ est cryptographique. Même un accès root ne suffirait pas.
 - All testing was performed on **hardware owned by the researcher**.
 - No third-party device, account or network was touched.
 - The device was **not damaged**, and was restored to factory state.
-- Findings are published after vendor notification, in line with coordinated
-  disclosure. No exploit code is included — only proof-of-concept harnesses for
-  the availability bug and protocol tooling.
-- The WhisperJoin material is documented **because the protocol is protected by
-  cloud authentication (CBL)**, so the documentation does not enable abuse;
-  it explains what the authentication protects.
+- **Coordinated disclosure:** findings were prepared for the Amazon Vulnerability
+  Research Program (HackerOne) and are submitted **before** wide distribution.
+  The primary finding is reported alone, first, in line with standard practice.
+- **No exploit code is published.** The repository contains protocol tooling and a
+  five-line availability proof-of-concept against a device the researcher controls.
+- **One finding was withdrawn after publication of an earlier draft** (see the
+  correction notice in `docs/08-findings.md`). Research that cannot correct itself
+  is not research; the error and its cause are documented in
+  `docs/09-methodology.md`.
+- The WhisperJoin BLE material is documented **because the protocol is protected by
+  cloud authentication (CBL)** — the documentation explains what that control
+  protects rather than enabling bypass of it.
 
 ## License
 
